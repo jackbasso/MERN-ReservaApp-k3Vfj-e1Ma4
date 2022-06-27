@@ -1,6 +1,6 @@
 1. creo carpeta api
 2. $ npm init -y => creo mi package.json
-IMPORTANTE EL node_module debe quedar adentro de la carpeta api pero las instalaciones de express, nodemon etc van en la raiz
+IMPORTANTE EL node_module debe quedar adentro de la carpeta api asi como las instalaciones de express, nodemon etc 
 3. $ npm install express
 4. creo index.js como mi archivo main e importo express, pero para no importarlo como const express = requiere('express') voy package.json e incluyo en la parte superior debajo del "main": "index.js" coloco "type": "module" y esto me permite hacer los import xxx from xxx como en react
 5. en index.js creo mi conexion con el backend
@@ -25,4 +25,9 @@ MONGOOSE
 22. $ npm install mongoose
 23. Voy a https://mongoosejs.com/docs/guide.html => "Connections" => "Erro Handling" y utilizo el try catch tal como lo indica la documentación
 24. En mi index.js coloco el try catch para manejar la conexión
+
+MINUTO 14
+
+ROUTES
+25. Dentro de la carpeta api creo una capeta "routes" y adentro creo las respectivas rutas
 

@@ -1,0 +1,39 @@
+import express from 'express';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import authRoute from "./routes/auth.js"
+import hotelsRoute from "./routes/hotels.js"
+import roomsRoute from "./routes/rooms.js"
+import usersRoute from "./routes/users.js"
+
+const app = express()
+
+dotenv.config() //carga mis variables de entorno del .env
+
+//Mongoose
+const connect = async () => {
+    try {
+    await mongoose.connect(process.env.MONGO);
+    console.log("Conectado a mongoDB")
+  } catch (error) {
+    throw(error);
+  }
+};
+
+mongoose.connection.on("disconnected", () => {
+  console.log("mongoDB desconectado")
+})
+
+app.use(express.json()); //esto es importante para poder enviar los post a la bd
+
+//middlewares bloque de código que se ejecuta entre la petición que hace el usuario (request) hasta que la petición llega al servidor. Es inevitable utilizar middlewares en una aplicación en Node.
+app.use("/api/auth", authRoute);
+app.use("/api/hotels", hotelsRoute);
+app.use("/api/rooms", roomsRoute);
+app.use("/api/users", usersRoute);
+
+// backend connection
+app.listen(8800, () => {
+  connect() // conexion con la bd. Si no hay el erro me aparecerá en la conexión de la api
+  console.log("Conectado al backend")
+})
