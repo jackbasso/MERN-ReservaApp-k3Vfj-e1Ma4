@@ -1,0 +1,28 @@
+1. creo carpeta api
+2. $ npm init -y => creo mi package.json
+IMPORTANTE EL node_module debe quedar adentro de la carpeta api pero las instalaciones de express, nodemon etc van en la raiz
+3. $ npm install express
+4. creo index.js como mi archivo main e importo express, pero para no importarlo como const express = requiere('express') voy package.json e incluyo en la parte superior debajo del "main": "index.js" coloco "type": "module" y esto me permite hacer los import xxx from xxx como en react
+5. en index.js creo mi conexion con el backend
+6. package.json en "scripts" quito el "test" e indico como inicia mi app => "start": "node index.js", con esto puedo arrancar el servidor con $ npm start
+7. $ npm start => con esto arranco mi conexión para verificarla
+8. $ npm install nodemon => lo instalo para no estar reiniciando mi server tras cada modificación y esto me ayuda automatizando el proceso min
+9. ahora voy a mi package.json y en "start" reemplazo "node" por "nodemon" y ahora inicio mi server con "npm start"
+MONGODB
+10. voy a https://www.mongodb.com/cloud => https://www.mongodb.com/pricing => atlas => shared 
+11. creo cuenta j..so.r@g.com y pass j..2..31!
+12. selecciono Cloud Provider & Region
+13. creo mi admin user jcsso pass j..2..31!
+14. mientras se crea bajo y coloco mi ip address q puede ser 0.0.0.0 de manera generica para q me acepte cualquier api address
+15. se abre mi database manager le doy al boton "Connect" y en Connect to Cluster selecciono "Connect your Application"
+16. Add the connection string into my application code y para mayor seguridad creo el .env
+17. Coloco MONGO = mongodb+srv://jackbasso:<password>@cluster0.wuoyg.mongodb.net/?retryWrites=true&w=majority
+18. <password> esto lo elimino completo y coloco el password creado en mongodb j..2..31! y entre .net/ y ? coloco el nombre de mi database
+19. $ npm install dotenv => Loads environment variables from .env file  
+20. lo import a mi index.js y coloco dotenv.config() para configurar mi conexión a la bd
+MONGOOSE
+21. Puedo hacer la conexión directa con MongoDB pero es mejor utilizar Mongoose que me permite utilizar SCHEMA para crear más facil mis modelos
+22. $ npm install mongoose
+23. Voy a https://mongoosejs.com/docs/guide.html => "Connections" => "Erro Handling" y utilizo el try catch tal como lo indica la documentación
+24. En mi index.js coloco el try catch para manejar la conexión
+
