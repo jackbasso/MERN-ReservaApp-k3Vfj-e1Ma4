@@ -26,8 +26,10 @@ MONGOOSE
 23. Voy a https://mongoosejs.com/docs/guide.html => "Connections" => "Erro Handling" y utilizo el try catch tal como lo indica la documentación
 24. En mi index.js coloco el try catch para manejar la conexión
 
-MINUTO 14
-
 ROUTES
 25. Dentro de la carpeta api creo una capeta "routes" y adentro creo las respectivas rutas
+
+MINUTO 37:50
+PRUEBA DE GIT 
+
 
