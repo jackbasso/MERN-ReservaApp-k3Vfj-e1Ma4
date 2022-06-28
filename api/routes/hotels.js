@@ -1,4 +1,5 @@
 import express from 'express';
+import { nextTick } from 'process';
 import Hotel from '../models/Hotel.js';
 
 const router = express.Router();
@@ -47,7 +48,9 @@ router.get('/', async (req, res) => {
     const hotels = await Hotel.find();
     res.status(200).json(hotels);
   } catch (error) {
-    res.status(500).json(err)
+    //res.status(500).json(err)
+    //middleware para manejo de errores
+    next(err)
   }
 })
 
