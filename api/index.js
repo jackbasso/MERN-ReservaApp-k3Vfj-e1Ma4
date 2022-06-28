@@ -24,13 +24,21 @@ mongoose.connection.on("disconnected", () => {
   console.log("mongoDB desconectado")
 })
 
-app.use(express.json()); //esto es importante para poder enviar los post a la bd
+app.use(express.json()); //El middleware app.use() se utiliza básicamente para definir el controlador de la solicitud particular realizada por el cliente. Esto es importante para poder enviar los post a la bd
 
 //middlewares bloque de código que se ejecuta entre la petición que hace el usuario (request) hasta que la petición llega al servidor. Es inevitable utilizar middlewares en una aplicación en Node.
 app.use("/api/auth", authRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 app.use("/api/users", usersRoute);
+
+//app.use((req, res, next) => {// se usa en las rutas next le dice a la aplicación que ejecute el próximo middleware e interrumpe el middleware q este corriendo y salta al siguiente con "next".
+ // console.log("Hola soy el Next middleware")
+//})
+
+app.use((err, req, res, next) => { // este middleware se usa para manejar los errores de otra forma; importante mantener el orden de los parámetros
+  return res.status(500).json("Hola desde el manejador de errores")
+})
 
 // backend connection
 app.listen(8800, () => {
