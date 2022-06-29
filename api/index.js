@@ -8,15 +8,15 @@ import usersRoute from "./routes/users.js"
 
 const app = express()
 
-dotenv.config() //carga mis variables de entorno del .env
+dotenv.config(); //carga mis variables de entorno del .env
 
 //Mongoose
 const connect = async () => {
     try {
     await mongoose.connect(process.env.MONGO);
     console.log("Conectado a mongoDB")
-  } catch (error) {
-    throw(error);
+  } catch (error) { 
+    throw error;
   }
 };
 
@@ -36,12 +36,20 @@ app.use("/api/users", usersRoute);
  // console.log("Hola soy el Next middleware")
 //})
 
+// Mi error handler
 app.use((err, req, res, next) => { // este middleware se usa para manejar los errores de otra forma; importante mantener el orden de los parámetros
-  return res.status(500).json("Hola desde el manejador de errores")
-})
+  const errorStatus = err.status || 500
+  const errorMessage = err.message || "Algo salió mal!"
+  return res.status(errorStatus).json({
+    success:false,
+    status:errorStatus,
+    message:errorMessage,
+    stack: err.stack,
+  });
+});
 
 // backend connection
 app.listen(8800, () => {
   connect() // conexion con la bd. Si no hay el erro me aparecerá en la conexión de la api
   console.log("Conectado al backend")
-})
+});

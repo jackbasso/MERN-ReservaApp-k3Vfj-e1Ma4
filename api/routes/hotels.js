@@ -41,17 +41,17 @@ router.get('/:id', async (req, res) => {
    } catch (err) {
     res.status(500).json(err)
   }
-})
+});
 //GET ALL
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next ) => {
   try {
-    const hotels = await Hotel.find();
+    const hotels = await Hotel.findById("sdssafa");
     res.status(200).json(hotels);
-  } catch (error) {
+  } catch (err) {
     //res.status(500).json(err)
-    //middleware para manejo de errores
-    next(err)
+    //middleware para manejo de errores desde index.js
+    next(err) 
   }
-})
+});
 
 export default router;
