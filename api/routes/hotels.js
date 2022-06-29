@@ -44,8 +44,9 @@ router.get('/:id', async (req, res) => {
 });
 //GET ALL
 router.get('/', async (req, res, next ) => {
+
   try {
-    const hotels = await Hotel.findById("sdssafa");
+    const hotels = await Hotel.find();
     res.status(200).json(hotels);
   } catch (err) {
     //res.status(500).json(err)
