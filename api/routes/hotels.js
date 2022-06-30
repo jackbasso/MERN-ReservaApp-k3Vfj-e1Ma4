@@ -1,53 +1,19 @@
 import express from 'express';
 import { nextTick } from 'process';
-import Hotel from '../models/Hotel.js';
-import { createHotel } from '../controllers/hotel.js'
+import { createHotel, deleteHotel, getHotel, getHotels, updateHotel } from '../controllers.js/hotel.js';
 
 
 const router = express.Router();
 
 //CREATE
 router.post('/', createHotel); // ver controller folder hotel.js
-
 //UPDATE
-router.put('/:id', async (req, res) => {
-  try {
-    const updatedHotel = await Hotel.findByIdAndUpdate(req.params.id, { $set: req.body}, //mongoDB $set overwrites the existing value of that field with the value of the specified expression. $set appends new fields to existing documents. You can include one or more $set stages in an aggregation operation.
-     {new:true}) //{new:true} luego de que se actualiza esto retorna la versión actualizada
-    res.status(200).json(updatedHotel)
-  } catch (err) {
-    res.status(500).json(err);
-  }
-})
+router.put('/:id', updateHotel)
 //DELETE
-router.delete('/:id', async (req, res) => {
-  try {
-    await Hotel.findByIdAndDelete(req.params.id);
-    res.status(200).json("El Hotel ha sido eliminado")
-  } catch (err) {
-    res.status(500).json(err);
-  }
-})
+router.delete('/:id', deleteHotel)
 //GET
-router.get('/:id', async (req, res) => {
-  try {
-    const hotel = Hotel.findById(req.params.id);
-    res.status(200).json(hotel);
-   } catch (err) {
-    res.status(500).json(err)
-  }
-});
+router.get('/:id', getHotel);
 //GET ALL
-router.get('/', async (req, res, next ) => {
-
-  try {
-    const hotels = await Hotel.find();
-    res.status(200).json(hotels);
-  } catch (err) {
-    //res.status(500).json(err)
-    //middleware para manejo de errores desde index.js
-    next(err) 
-  }
-});
+router.get('/', getHotels);
 
 export default router;
