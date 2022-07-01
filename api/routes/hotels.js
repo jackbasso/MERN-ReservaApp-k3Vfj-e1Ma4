@@ -1,6 +1,6 @@
 import express from 'express';
 import { nextTick } from 'process';
-import { createHotel, deleteHotel, getHotel, getHotels, updateHotel } from '../controllers.js/hotel.js';
+import { createHotel, deleteHotel, getHotel, getHotels, updateHotel } from '../controllers/hotel.js';
 
 
 const router = express.Router();
