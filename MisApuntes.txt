@@ -49,3 +49,13 @@ FRONTEND
 1. Creo carpeta "client" y clono del repositorio la rama de UI
 git clone --single-branch -b "react-booking-ui" https://github.com/safak/youtube2022.git .
 lleva un punto al final
+2. Esto viene como un submodulo en github por lo que al hacer commit no los hala al main repository como el backend. Para eliminar el submodule hago esto:
+git rm --cached submodule_path 
+rm -rf submodule_path/.git
+git add submodule_path
+git commit -m "remove submodule"
+3. Para add un folder le pongo slash al final ejemplo "git add client/"
+
+4. Creo un folder en src llamado "Hooks" para manajer mis hooks como countByCity y uso axios 
+5. importo axios dentro de la carpeta client
+$ npm install axios
