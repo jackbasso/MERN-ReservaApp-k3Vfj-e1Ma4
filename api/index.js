@@ -1,10 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import authRoute from "./routes/auths.js"
-import hotelsRoute from "./routes/hotels.js"
-import roomsRoute from "./routes/rooms.js"
-import usersRoute from "./routes/users.js"
+import cookieParser from 'cookie-parser'; // pasar cookies con el token
+import authRoute from "./routes/auths.js";
+import hotelsRoute from "./routes/hotels.js";
+import roomsRoute from "./routes/rooms.js";
+import usersRoute from "./routes/users.js";
+
 
 const app = express()
 
@@ -24,8 +26,9 @@ mongoose.connection.on("disconnected", () => {
   console.log("mongoDB desconectado")
 })
 
+//middlewares
 app.use(express.json()); //El middleware app.use() se utiliza básicamente para definir el controlador de la solicitud particular realizada por el cliente. Esto es importante para poder enviar los post a la bd
-
+app.use(cookieParser()); //pasar cookies con el token
 //middlewares bloque de código que se ejecuta entre la petición que hace el usuario (request) hasta que la petición llega al servidor. Es inevitable utilizar middlewares en una aplicación en Node.
 app.use("/api/auth", authRoute);
 app.use("/api/hotels", hotelsRoute);

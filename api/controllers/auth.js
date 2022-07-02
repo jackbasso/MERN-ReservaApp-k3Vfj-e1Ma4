@@ -1,6 +1,8 @@
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import { createError } from '../utils/error.js';
+
 
 export const register = async (req, res, next) => {
   try {
@@ -31,8 +33,11 @@ export const login = async (req, res, next) => {
       user.password
     )
     if(!isPasswordCorrect) return next(createError(400, "Usuario o contraseña incorrecto!"))
+    
+    const token = jwt.sign({ id:user._id, isAdmin:user.isAdmin }, process.env.JWT) // la secretkey la generé en la terminal con => openssl rand -base64 32 y la pasé al .env
+
     const {password, isAdmin, ...otherDetails} = user._doc // para no mostrar el password ni el isAdmin, si solo dejo user me devuelve un objeto completo pero la info está en _doc
-    res.status(200).json({...otherDetails});
+    res.cookie("access_token", token, {httpOnly: true}).status(200).json({...otherDetails});
   } catch (err) {
     next(err)
   }
