@@ -37,7 +37,7 @@ export const deleteRoom = async (req, res, next) => {
     await Room.findByIdAndDelete(req.params.id);
     try {
       await Hotel.findByIdAndUpdate(hotelId, {
-        $pull: {rooms: req.params.id},
+        $pull: {rooms: req.params.id}, // $pull metodo de mongoose
       });
     } catch (err) {
       next(err)
