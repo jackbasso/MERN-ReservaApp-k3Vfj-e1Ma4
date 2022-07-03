@@ -18,7 +18,7 @@ const useFetch = (url) => {
       setLoading(false)
     };
     fetchData();
-  }, [url]);
+  }, []); // con [url] cada vez que se altere el url activa el useEffect
   
   
   const reFetch = async () => {
@@ -26,7 +26,7 @@ const useFetch = (url) => {
   try {
     const res = await axios.get(url)
     setData(res.data)
-  } catch (err) {
+  } catch (err) { 
     setError(err)
   }
   setLoading(false)

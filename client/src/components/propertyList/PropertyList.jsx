@@ -1,10 +1,9 @@
 import "./propertyList.css";
 import useFetch from "../../hooks/useFetch";
-import { useEffect, useState } from "react";
 
 const PropertyList = () => {
 
-  const {data, loading, error} = useFetch("http://localhost:8800/api/hotels/countByType");
+  const {data, loading, error} = useFetch("/hotels/countByType");
   
 
   const images = [
@@ -41,3 +40,5 @@ const PropertyList = () => {
 };
 
 export default PropertyList;
+
+
