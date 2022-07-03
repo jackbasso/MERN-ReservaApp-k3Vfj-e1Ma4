@@ -59,3 +59,7 @@ git commit -m "remove submodule"
 4. Creo un folder en src llamado "Hooks" para manajer mis hooks como countByCity y uso axios 
 5. importo axios dentro de la carpeta client
 $ npm install axios
+
+6. En API como se uso proxy en el package.json del FRONTEND no es necesario pero lo recomendable es instalar cors
+$ npm install cors
+7. en index.js de la api lo importo y creo el middleware

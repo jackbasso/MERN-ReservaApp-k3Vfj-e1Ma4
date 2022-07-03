@@ -11,6 +11,7 @@
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "date-fns": "^2.28.0",
     "react": "^18.0.0",
     "react-date-range": "^1.4.0",
@@ -42,5 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }, "proxy":"http://localhost:8800/api"
+  },
+  "proxy": "http://localhost:8800/api"
 }
