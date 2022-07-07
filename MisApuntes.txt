@@ -66,3 +66,5 @@ $ npm install cors
 
 ADD BY me
 List.jsx adicioné el dispatch para que al cambiar la fecha en el search del listado me actualice los valores y me recalcule los días y el precio total ya que no estaba en el video
+
+MINUTO 2:30:00
