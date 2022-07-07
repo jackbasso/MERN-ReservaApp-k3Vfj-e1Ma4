@@ -63,3 +63,6 @@ $ npm install axios
 6. En API como se uso proxy en el package.json del FRONTEND no es necesario pero lo recomendable es instalar cors
 $ npm install cors
 7. en index.js de la api lo importo y creo el middleware
+
+ADD BY me
+List.jsx adicioné el dispatch para que al cambiar la fecha en el search del listado me actualice los valores y me recalcule los días y el precio total ya que no estaba en el video
