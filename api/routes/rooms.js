@@ -10,7 +10,7 @@ router.post('/:hotelid', verifyAdmin, createRoom); // ver controller folder room
 //UPDATE
 router.put('/:id',  verifyAdmin, updateRoom)
 //GET Rooms Available
-router.get('/availability/:id', updateRoomAvailability )
+router.put('/availability/:id', updateRoomAvailability )
 //DELETE
 router.delete('/:id/:hotelid',  verifyAdmin, deleteRoom)
 //GET
