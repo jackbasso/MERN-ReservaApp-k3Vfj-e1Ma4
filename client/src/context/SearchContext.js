@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
 
 const INITIAL_STATE = {
   city: undefined,
@@ -15,7 +15,7 @@ export const SearchContext = createContext(INITIAL_STATE)
 const SearchReducer = (state, action) => {
   switch(action.type){
     case "NEW_SEARCH":
-      return action.payload 
+      return action.payload // payload are destination, time and options from the search bar
     case "RESET_SEARCH":  
       return INITIAL_STATE
     default:
@@ -24,11 +24,11 @@ const SearchReducer = (state, action) => {
 };
 
 export const SearchContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE);
+  const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE); //The useReducer Hook returns the current state and a dispatch method.
   
   return (
     <SearchContext.Provider
-      value={{ city:state.city, date:state.dates, optiones:state.options, dispatch }}
+      value={{ city:state.city, dates:state.dates, options:state.options, dispatch }}
     >
       { children }
    </SearchContext.Provider>
