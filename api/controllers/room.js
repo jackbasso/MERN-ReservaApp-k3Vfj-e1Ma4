@@ -65,3 +65,16 @@ export const getRooms = async (req, res, next) => {
     next();
   }
 }
+
+export const updateRoomAvailability = async (req, res, next) => {
+  try {
+    await Room.updateOne({"roomNumbers._id": req.params.id}, {
+      $push: {
+        "roomNumbers.$.unavailableDates": req.body.dates // This is a way to update nested properties in MongoDB instead of create a new model
+      }
+    })
+    res.status(200).json(updatedRoom)
+  } catch (err) {
+    next();
+  }
+}
