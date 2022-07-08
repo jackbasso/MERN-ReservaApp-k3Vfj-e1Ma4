@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { useContext, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import "./login.css"
 
@@ -22,7 +22,7 @@ const Login = () => {
     dispatch({ type: "LOGIN_START "});
     try {
       const res = await axios.post('/auth/login', credentials);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/")
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data })

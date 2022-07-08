@@ -67,4 +67,27 @@ $ npm install cors
 ADD BY me
 List.jsx adicioné el dispatch para que al cambiar la fecha en el search del listado me actualice los valores y me recalcule los días y el precio total ya que no estaba en el video
 
-MINUTO 2:30:00
+################################
+ADMIN 2:56
+1. Creo la carpeta admin y le importo el branch de admin de https://github.com/safak/youtube2022.git
+2. $ git clone --single-branch -b "react-admin" https://github.com/safak/youtube2022.git . 
+3. Esto clona especificamente la branch que indico y el punto al final es para que sea en la carpeta en que estoy.
+4. Instalo axios 
+$ npm install axios
+
+CLOUDINARY  
+https://cloudinary.com/ 3:22
+1. Creo la cuenta
+2. voy al dashboard
+3. voy a settings
+4. Luego a la pestaña de "Upload"
+https://cloudinary.com/console/c-7ee138de02e85dd322f7f6a4fbd170/settings/upload
+5. bajo hasta "Add upload preset"
+6. En "upload preset name" escribo "upload"
+7. en "signed mode" seleciono "unsigned"
+8. en "folder" le coloco "upload" y le doy SAVE
+9. Me voy a la Documentation y a Reference
+10. En el sidebar me voy a Upload API
+https://cloudinary.com/documentation/image_upload_api_reference
+11. copio la url de ejemplo y en la sección dentro del path demo la voy a reemplazar con mi username jackbasso
+es esta la url https://api.cloudinary.com/v1_1/demo/image/upload
